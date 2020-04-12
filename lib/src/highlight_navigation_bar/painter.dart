@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class LightPainter extends CustomPainter {
   AnimationController animation;
+  Color color;
 
-  LightPainter({this.animation});
+  LightPainter({this.animation , this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..color = Colors.red
       ..shader = LinearGradient(colors: [
-        Colors.white.withOpacity(0.5 - animation.value / 2),
-        Colors.white.withOpacity(0.0)
+        color.withOpacity(0.5 - animation.value / 2),
+        color.withOpacity(0.0)
       ], stops: [
         0.0,
         1.0

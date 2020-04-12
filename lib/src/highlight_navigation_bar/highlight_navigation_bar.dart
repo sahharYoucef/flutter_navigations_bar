@@ -8,6 +8,7 @@ class HighlightNavigationBar extends StatefulWidget {
   final Color backgroundColor;
   final Color unselectedIconColor;
   final Color selectedIconColor;
+  final Color highLightColor;
 
   const HighlightNavigationBar({
     Key key,
@@ -16,7 +17,7 @@ class HighlightNavigationBar extends StatefulWidget {
     this.duration = const Duration(milliseconds: 900),
     this.backgroundColor = const Color(0xff2c362f),
     this.unselectedIconColor = Colors.grey,
-    this.selectedIconColor = Colors.white,
+    this.selectedIconColor = Colors.white, this.highLightColor = Colors.white,
   }) : super(key: key);
   @override
   _HighlightNavigationBarState createState() => _HighlightNavigationBarState();
@@ -110,7 +111,7 @@ class _HighlightNavigationBarState extends State<HighlightNavigationBar>
               child: AnimatedBuilder(
                 animation: _opacityController,
                 builder: (context, child) => CustomPaint(
-                  painter: LightPainter(animation: _opacityController),
+                  painter: LightPainter(animation: _opacityController , color: widget.highLightColor),
                   child: Container(
                     height: widget.height,
                     width:
