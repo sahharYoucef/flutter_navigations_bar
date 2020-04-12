@@ -1,7 +1,7 @@
 import 'package:flutter/Material.dart';
 import './painter.dart';
 
-class NavigationBar extends StatefulWidget {
+class HighlightNavigationBar extends StatefulWidget {
   final double height;
   final List<IconButton> icons;
   final Duration duration;
@@ -9,7 +9,7 @@ class NavigationBar extends StatefulWidget {
   final Color unselectedIconColor;
   final Color selectedIconColor;
 
-  const NavigationBar({
+  const HighlightNavigationBar({
     Key key,
     @required this.height,
     @required this.icons,
@@ -19,10 +19,10 @@ class NavigationBar extends StatefulWidget {
     this.selectedIconColor = Colors.white,
   }) : super(key: key);
   @override
-  _NavigationBarState createState() => _NavigationBarState();
+  _HighlightNavigationBarState createState() => _HighlightNavigationBarState();
 }
 
-class _NavigationBarState extends State<NavigationBar>
+class _HighlightNavigationBarState extends State<HighlightNavigationBar>
     with TickerProviderStateMixin {
   AnimationController _positionController;
   AnimationController _opacityController;
@@ -54,7 +54,7 @@ class _NavigationBarState extends State<NavigationBar>
   }
 
   @override
-  void didUpdateWidget(NavigationBar oldWidget) {
+  void didUpdateWidget(HighlightNavigationBar oldWidget) {
     if (widget.icons != oldWidget.icons) {}
     super.didUpdateWidget(oldWidget);
   }
