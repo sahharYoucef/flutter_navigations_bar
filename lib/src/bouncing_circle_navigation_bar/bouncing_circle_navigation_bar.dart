@@ -1,14 +1,14 @@
-import 'package:fancy_navigation_bar/src/second_navigation_bar/painter.dart';
+import './painter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'clip_shadow_path.dart';
 import 'painter.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
+class BouncingCircleNavigationBar extends StatefulWidget {
   final Function(int) onchanged;
   final Color iconColor;
-  final List<BarIcon> icons;
+  final List<BottomNavigationBarItem> icons;
   final Color barColor;
   final Color circleColor;
   final BoxShadow boxShadow;
@@ -16,7 +16,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
   final double margin;
   final double height;
 
-  const CustomBottomNavigationBar({
+  const BouncingCircleNavigationBar({
     Key key,
     @required this.onchanged,
     this.iconColor = Colors.white,
@@ -29,11 +29,11 @@ class CustomBottomNavigationBar extends StatefulWidget {
     this.height = 70,
   }) : super(key: key);
   @override
-  _CustomBottomNavigationBarState createState() =>
-      _CustomBottomNavigationBarState();
+  _BouncingCircleNavigationBarState createState() =>
+      _BouncingCircleNavigationBarState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar>
+class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBar>
     with SingleTickerProviderStateMixin {
   double value;
   double newPosition;
@@ -65,7 +65,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar>
   }
 
   @override
-  void didUpdateWidget(CustomBottomNavigationBar oldWidget) {
+  void didUpdateWidget(BouncingCircleNavigationBar oldWidget) {
     if (oldWidget.icons != widget.icons) {
       selected = List.generate(widget.icons.length, (index) {
         if (index == 0) {
@@ -133,7 +133,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar>
           ),
           ...widget.icons
               .asMap()
-              .map((index, BarIcon barIcon) {
+              .map((index, BottomNavigationBarItem barIcon) {
                 return MapEntry(
                     index,
                     _SpecialIcon(
@@ -236,10 +236,10 @@ class _SpecialIcon extends StatelessWidget {
   }
 }
 
-class BarIcon {
+class BottomNavigationBarItem {
   final Widget icon;
   final Function onPressed;
   final String lable;
 
-  BarIcon({this.icon, this.onPressed, this.lable});
+  BottomNavigationBarItem({this.icon, this.onPressed, this.lable});
 }

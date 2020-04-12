@@ -5,14 +5,19 @@ class NavigationBar extends StatefulWidget {
   final double height;
   final List<IconButton> icons;
   final Duration duration;
+  final Color backgroundColor;
+  final Color unselectedIconColor;
+  final Color selectedIconColor;
 
-
-  const NavigationBar(
-      {Key key,
-      this.height,
-      this.icons = const [],
-      this.duration = const Duration(milliseconds: 900)})
-      : super(key: key);
+  const NavigationBar({
+    Key key,
+    @required this.height,
+    @required this.icons,
+    this.duration = const Duration(milliseconds: 900),
+    this.backgroundColor = const Color(0xff2c362f),
+    this.unselectedIconColor = Colors.grey,
+    this.selectedIconColor = Colors.white,
+  }) : super(key: key);
   @override
   _NavigationBarState createState() => _NavigationBarState();
 }
@@ -29,7 +34,7 @@ class _NavigationBarState extends State<NavigationBar>
   void initState() {
     _positionController = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: widget.duration.inMilliseconds) )
+        duration: Duration(milliseconds: widget.duration.inMilliseconds))
       ..addStatusListener((AnimationStatus animationStatus) async {
         if (animationStatus == AnimationStatus.forward) {
           _opacityController.forward();
@@ -61,7 +66,7 @@ class _NavigationBarState extends State<NavigationBar>
       height: widget.height,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Color(0xff2c362f),
+          color: widget.backgroundColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4)]),
       child: Stack(
@@ -88,8 +93,8 @@ class _NavigationBarState extends State<NavigationBar>
                                   widget.icons[index].onPressed();
                                 },
                                 color: index == currentIndex
-                                    ? Colors.white
-                                    : Colors.grey,
+                                    ? widget.selectedIconColor
+                                    : widget.unselectedIconColor,
                               )),
                         ))
               ],
