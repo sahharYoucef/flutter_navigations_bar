@@ -8,6 +8,7 @@ class HighlightNavigationBar extends StatefulWidget {
   final Color backgroundColor;
   final Color unselectedIconColor;
   final Color selectedIconColor;
+  final Function(int) onchanged;
   final Color highLightColor;
 
   const HighlightNavigationBar({
@@ -17,7 +18,7 @@ class HighlightNavigationBar extends StatefulWidget {
     this.duration = const Duration(milliseconds: 900),
     this.backgroundColor = const Color(0xff2c362f),
     this.unselectedIconColor = Colors.grey,
-    this.selectedIconColor = Colors.white, this.highLightColor = Colors.white,
+    this.selectedIconColor = Colors.white, this.highLightColor = Colors.white,@required  this.onchanged,
   }) : super(key: key);
   @override
   _HighlightNavigationBarState createState() => _HighlightNavigationBarState();
@@ -92,6 +93,7 @@ class _HighlightNavigationBarState extends State<HighlightNavigationBar>
                                     currentIndex = index;
                                   });
                                   widget.icons[index].onPressed();
+                                  widget.onchanged(index);
                                 },
                                 color: index == currentIndex
                                     ? widget.selectedIconColor

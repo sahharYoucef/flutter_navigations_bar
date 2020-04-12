@@ -8,7 +8,7 @@ import 'painter.dart';
 class BouncingCircleNavigationBar extends StatefulWidget {
   final Function(int) onchanged;
   final Color iconColor;
-  final List<BottomNavigationBarItem> icons;
+  final List<NavigationBarItem> icons;
   final Color barColor;
   final Color circleColor;
   final BoxShadow boxShadow;
@@ -133,7 +133,7 @@ class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBa
           ),
           ...widget.icons
               .asMap()
-              .map((index, BottomNavigationBarItem barIcon) {
+              .map((index, NavigationBarItem barIcon) {
                 return MapEntry(
                     index,
                     _SpecialIcon(
@@ -236,10 +236,10 @@ class _SpecialIcon extends StatelessWidget {
   }
 }
 
-class BottomNavigationBarItem {
+class NavigationBarItem {
   final Widget icon;
   final Function onPressed;
   final String lable;
 
-  BottomNavigationBarItem({this.icon, this.onPressed, this.lable});
+  NavigationBarItem({this.icon, this.onPressed, this.lable});
 }
