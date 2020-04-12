@@ -97,12 +97,11 @@ class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBa
                 BoxShadow(
                   color: Colors.transparent,
                 ),
-            clipper: BottomBarClipper(
+           clipper: BottomBarClipper(
                 newPosition ??
                     ((MediaQuery.of(context).size.width - widget.margin * 2) /
                             widget.icons.length) /
-                        2,
-                MediaQuery.of(context).size.width / widget.icons.length),
+                        2,),
             child: Container(
               decoration: BoxDecoration(
                   color: widget.barColor,
@@ -118,22 +117,22 @@ class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBa
             child: CustomPaint(
               painter: CirclePainter(widget.circleColor),
               child: Container(
-                height: MediaQuery.of(context).size.width / widget.icons.length,
-                width: MediaQuery.of(context).size.width / widget.icons.length,
+                height: 70,
+                width: 70,
               ),
             ),
             builder: (BuildContext context, Widget child) {
               return Positioned(
-                top: _animation.value - 5,
+                top: _animation.value ,
                 bottom: 0,
                 left: newPosition ?? value,
                 child: child,
               );
             },
           ),
-          ...widget.icons
+           ...widget.icons
               .asMap()
-              .map((index, NavigationBarItem barIcon) {
+              .map((index,  barIcon) {
                 return MapEntry(
                     index,
                     _SpecialIcon(
@@ -141,11 +140,7 @@ class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBa
                         selected: selected[index],
                         icon: barIcon.icon,
                         text: barIcon.lable,
-                        position: value * (index + 1) +
-                            MediaQuery.of(context).size.width /
-                                widget.icons.length /
-                                2 *
-                                index + 5,
+                        position: value * (index + 1) + 30 * index,
                         onPressed: () {
                           setState(() {
                             if (!selected[index]) {
@@ -163,11 +158,7 @@ class _BouncingCircleNavigationBarState extends State<BouncingCircleNavigationBa
                                   .toList();
                               // widget.onchanged(index);
                             }
-                            newPosition = value * (index + 1) +
-                                MediaQuery.of(context).size.width /
-                                    widget.icons.length /
-                                    2 *
-                                    index;
+                            newPosition = value * (index + 1) + 30 * index;
                           });
                           barIcon.onPressed();
                         }));

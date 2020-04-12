@@ -21,17 +21,16 @@ class CirclePainter extends CustomPainter {
 
 class BottomBarClipper extends CustomClipper<Path> {
   double position;
-  double width;
-  BottomBarClipper(this.position, this.width);
+  BottomBarClipper(this.position);
   @override
   Path getClip(Size size) {
-    final path = Path()
+     final path = Path()
       ..moveTo(0, 0)
-      ..lineTo(position - 10, 0.0)
+      ..lineTo( position - 10 , 0.0)
       ..arcToPoint(
-        Offset(position + width, 0),
+        Offset( position + 70, 0),
         clockwise: false,
-        radius: Radius.circular(width / 2),
+        radius: Radius.circular(40),
       )
       ..lineTo(size.width, 0.0)
       ..lineTo(size.width, size.height)

@@ -1,8 +1,8 @@
 name: fancy_navigation_bar
 description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.2
+author: sahharYoucef
+homepage: https://github.com/sahharYoucef/flutter_navigations_bar
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
